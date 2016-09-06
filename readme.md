@@ -14,30 +14,33 @@ $ npm install --save is-in-correct-format
 
 ```js
 const isInCorrectFormat = require('is-in-correct-format');
+const is = isInCorrectFormat.is;
 
-isInCorrectFormat('unicorns');
-//=> 'unicorns & rainbows'
+isInCorrectFormat( {
+	a:2
+ },
+ {
+ 	a: is.number
+ });
+//=> true
 ```
 
 
 ## API
 
-### isInCorrectFormat(input, [options])
+### isInCorrectFormat(input, check, [allValues])
 
 #### input
 
-Type: `string`
+Type: `Object`<br>
+Description: The object being checked whether is in the correct type
 
-Lorem ipsum.
+Cyclical objects are not allowed.
 
-#### options
+#### check
 
-##### foo
-
-Type: `boolean`<br>
-Default: `false`
-
-Lorem ipsum.
+Type: `Object`<br>
+Description: Follows the same format as the input object to check whether the given keys are passing the tests specified.
 
 
 ## License

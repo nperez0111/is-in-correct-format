@@ -28,16 +28,17 @@ module.exports = ( obj, check, allValues ) => {
     }
 
     let traverseObj = function ( obj, checker ) {
-        return Object.keys( obj ).every( function ( key ) {
-            let val = obj[ key ]
+        return Object.keys( checker ).every( function ( key ) {
+            let val = obj[ key ],
+                check = checker[ key ]
             if ( is.object( val ) ) {
-                return traverseObj( val, checker[ key ] )
+                return traverseObj( val, check )
             } else {
-                if ( is.function( checker[ key ] ) ) {
+                if ( is.function( check ) ) {
 
-                    return allValues( val ) && checker[ key ]( val, key )
+                    return allValues( val ) && check( val, key )
                 }
-                return val instanceof checker[ key ] && flag ? true : is.function( allValues ) ? typeof allValues( val ) === typeof val : val instanceof allValues
+                return val instanceof check && flag ? true : is.function( allValues ) ? typeof allValues( val ) === typeof val : val instanceof allValues
             }
         } )
     }
