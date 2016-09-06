@@ -42,6 +42,41 @@ Cyclical objects are not allowed.
 Type: `Object`<br>
 Description: Follows the same format as the input object to check whether the given keys are passing the tests specified.
 
+```js
+{
+	a: is.function,
+	b: function( val ) { 
+		return val > 10
+    },
+    c: val => is.function(val) || is.object(val)
+}
+```
+
+These are all examples of possibilities in the check object, you can use the helper object `is` to assist in checking type or define your own checker functions and arrow functions.
+
+#### allValues
+Type: `Function`
+Description: Will be calculated on all values checked.
+
+### isInCorrectFormat.is
+
+#### number
+Returns `true` if argument is a `Number`
+#### string
+Returns `true` if argument is a `String`
+#### function
+Returns `true` if argument is a `function`
+#### object
+Returns `true` if argument is a `Object`
+#### promise
+Returns `true` if argument is a `Promise`
+#### buffer
+Returns `true` if argument is a `Buffer`
+#### regex
+Returns `true` if argument is a `Regex`
+#### symbol
+Returns `true` if argument is a `Symbol`
+
 
 ## License
 
