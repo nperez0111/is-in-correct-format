@@ -98,3 +98,36 @@ test( 'allValues', t => {
         c: fn.is.string
     }, String ) )
 } )
+
+test( 'deep all values', t => {
+    t.true( fn( {
+        a: {
+            b: 2
+        }
+    }, {
+        a: {
+            b: fn.is.number
+        }
+    }, Number ) )
+
+    t.false( fn( {
+        a: {
+            b: 2
+        }
+    }, {
+        a: {
+            b: Number
+        }
+    }, fn.is.string ) )
+
+    t.true( fn( {
+        a: {
+            b: 2
+        }
+    }, {
+        a: {
+            b: Number
+        }
+    }, String ) )
+
+} )

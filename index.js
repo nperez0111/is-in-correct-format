@@ -37,7 +37,7 @@ module.exports = ( obj, check, allValues ) => {
 
                     return allValues( val ) && checker[ key ]( val, key )
                 }
-                return val instanceof checker[ key ] && flag ? true : is.function( allValues ) ? allValues( val ) : val instanceof allValues
+                return val instanceof checker[ key ] && flag ? true : is.function( allValues ) ? typeof allValues( val ) === typeof val : val instanceof allValues
             }
         } )
     }
