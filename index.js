@@ -18,24 +18,30 @@ let please = null
     isItInCorrectFormat({a:{b:3}},{a:{b:is.number}})
     isItInCorrectFormat({a:{b:3}},{a:{b:a=>is.number(a)||is.function(a)}})
     */
-module.exports = ( obj, check ) => {
+module.exports = ( obj, check, allValues ) => {
+    let flag = false
     if ( !obj || !check )
         return false
+    if ( allValues === undefined ) {
+        allValues = a => true
+        flag = true
+    }
 
-    let recur = function ( obj, checker ) {
-        return Object.keys( obj ).filter( function ( key ) {
+    let traverseObj = function ( obj, checker ) {
+        return Object.keys( obj ).every( function ( key ) {
             let val = obj[ key ]
             if ( is.object( val ) ) {
-                return recur( val, checker[ key ] )
+                return traverseObj( val, checker[ key ] )
             } else {
                 if ( is.function( checker[ key ] ) ) {
-                    return checker[ key ]( val, key )
+
+                    return allValues( val ) && checker[ key ]( val, key )
                 }
-                return val instanceof checker[ key ]
+                return val instanceof checker[ key ] && flag ? true : is.function( allValues ) ? allValues( val ) : val instanceof allValues
             }
-        } ).length > 0
+        } )
     }
-    return recur( obj, check )
+    return traverseObj( obj, check )
 
 
 };
