@@ -7,7 +7,8 @@ const is = {
         buffer: require( 'is-buffer' ),
         promise: require( 'is-promise' ),
         regex: require( 'is-regex' ),
-        symbol: require( 'is-symbol' )
+        symbol: require( 'is-symbol' ),
+        boolean: a => a === true || a === false
     },
     extender = require( 'objextension' )
 let please = null
@@ -27,22 +28,32 @@ module.exports = ( obj, check, allValues ) => {
         flag = true
     }
 
-    let traverseObj = function ( obj, checker ) {
-        return Object.keys( checker ).every( function ( key ) {
-            let val = obj[ key ],
-                check = checker[ key ]
-            if ( is.object( val ) ) {
-                return traverseObj( val, check )
-            } else {
-                if ( is.function( check ) ) {
-
-                    return allValues( val ) && check( val, key )
+    let checkAllVals = function ( obj, checker ) {
+            return Object.keys( obj ).every( function ( key ) {
+                let val = obj[ key ]
+                if ( is.object( val ) ) {
+                    return checkAllVals( val, checker )
                 }
-                return val instanceof check && flag ? true : is.function( allValues ) ? typeof allValues( val ) === typeof val : val instanceof allValues
-            }
-        } )
-    }
-    return traverseObj( obj, check )
+                let ret = checker( val )
+                return is.boolean( ret ) ? ret : typeof checker( val ) === typeof val
+            } )
+        },
+        traverseObj = function ( obj, checker ) {
+            return Object.keys( checker ).every( function ( key ) {
+                let val = obj[ key ],
+                    check = checker[ key ]
+                if ( is.object( val ) ) {
+                    return traverseObj( val, check )
+                } else {
+                    if ( is.function( check ) ) {
+
+                        return check( val, key )
+                    }
+                    return val instanceof check
+                }
+            } )
+        }
+    return traverseObj( obj, check ) && checkAllVals( obj, allValues )
 
 
 };

@@ -97,6 +97,14 @@ test( 'allValues', t => {
         b: fn.is.string,
         c: fn.is.string
     }, String ) )
+    t.false( fn( {
+        a: "b",
+        b: 2,
+        c: "2"
+    }, {
+        a: fn.is.string,
+        c: fn.is.string
+    }, fn.is.string ) )
 } )
 
 test( 'deep all values', t => {
@@ -128,6 +136,6 @@ test( 'deep all values', t => {
         a: {
             b: Number
         }
-    }, String ) )
+    }, Number ) )
 
 } )
