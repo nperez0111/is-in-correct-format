@@ -1,6 +1,6 @@
 {
     "name": "is-in-correct-format",
-    "version": "0.0.3",
+    "version": "0.1.0",
     "description": "Allows you to check whether a given object is in the correct specified format.",
     "license": "MIT",
     "repository": "nperez0111/is-in-correct-format",
