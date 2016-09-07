@@ -139,3 +139,21 @@ test( 'deep all values', t => {
     }, Number ) )
 
 } )
+
+test( 'check inner value of arrays', t => {
+    t.true( fn( {
+        a: [ 1, 2, 3 ]
+    }, {
+        a: fn.is.number
+    } ) )
+
+    t.true( fn( {
+        a: {
+            d: [ 1, 2, 3 ]
+        }
+    }, {
+        a: {
+            d: fn.is.number
+        }
+    } ) )
+} )

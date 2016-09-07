@@ -29,12 +29,11 @@ const is = {
         return Object.keys( checker ).every( function ( key ) {
             let val = obj[ key ],
                 check = checker[ key ]
-            if ( is.object( val ) ) {
+            if ( is.object( val ) && !is.array( val ) ) {
                 return traverseObj( val, check )
             } else {
                 if ( is.function( check ) ) {
                     if ( is.array( val ) ) {
-                        ///TEST THIS SHIT
                         return val.every( c => check( c, key, val ) )
                     }
                     return check( val, key )
