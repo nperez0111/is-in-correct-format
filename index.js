@@ -18,7 +18,7 @@ const is = {
     checkAllVals = function ( obj, checker ) {
         return Object.keys( obj ).every( function ( key ) {
             let val = obj[ key ]
-            if ( is.object( val ) ) {
+            if ( is.object( val ) && !is.array( val ) ) {
                 return checkAllVals( val, checker )
             }
             let ret = checker( val )
