@@ -48,7 +48,7 @@ isInCorrectFormat( {
     	b: is.number
     }
  },is.number);
-//=> false because the array does not satisfy 'is.number'
+//=> true because the arrays values all satisfy 'is.number'
 ```
 
 
