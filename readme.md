@@ -23,6 +23,32 @@ isInCorrectFormat( {
  	a: is.number
  });
 //=> true
+
+isInCorrectFormat( {
+	a:{
+    	b: 3,
+        c: 24
+    }
+ },
+ {
+ 	a: {
+    	b: is.number
+    }
+ },is.number);
+//=> true
+
+isInCorrectFormat( {
+	a:{
+    	b: 3,
+        c: [1,2,3]
+    }
+ },
+ {
+ 	a: {
+    	b: is.number
+    }
+ },is.number);
+//=> false because the array does not satisfy 'is.number'
 ```
 
 
@@ -56,7 +82,7 @@ These are all examples of possibilities in the check object, you can use the hel
 
 #### allValues
 Type: `Function`
-Description: Will be calculated on all values checked.
+Description: Will be calculated on all values of `input` object regardless of whether they show in the checked object or not.
 
 ### isInCorrectFormat.is
 
@@ -66,8 +92,20 @@ Returns `true` if argument is a `Number`
 Returns `true` if argument is a `String`
 #### function
 Returns `true` if argument is a `function`
+#### boolean
+Returns `true` if argument is `true or false`
+#### true
+Returns `true` if argument is `true`
+#### false
+Returns `true` if argument is a `false`
+#### array
+Returns `true` if argument is an `Array`
 #### object
-Returns `true` if argument is a `Object`
+Returns `true` if argument is an `Object`
+#### undefined
+Returns `true` if argument is `undefined`
+#### null
+Returns `true` if argument is `null`
 #### promise
 Returns `true` if argument is a `Promise`
 #### buffer

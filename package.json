@@ -1,38 +1,37 @@
 {
-    "name": "is-in-correct-format",
-    "version": "0.0.1",
-    "description": "Allows you to check whether a given object is in the correct specified format.",
-    "license": "MIT",
-    "repository": "nperez0111/is-in-correct-format",
-    "author": {
-        "name": "Nick The Sick",
-        "email": "nperez0111@gmail.com",
-        "url": "nickthesick.com"
-    },
-    "engines": {
-        "node": ">=4"
-    },
-    "scripts": {
-        "test": "ava"
-    },
-    "files": [
-        "index.js"
-    ],
-    "keywords": [
-        ""
-    ],
-    "dependencies": {
-        "is-buffer": "^1.1.4",
-        "is-function": "^1.0.1",
-        "is-number": "^2.1.0",
-        "is-object": "^1.0.1",
-        "is-promise": "^2.1.0",
-        "is-regex": "^1.0.3",
-        "is-string": "^1.0.4",
-        "is-symbol": "^1.0.1",
-        "objextension": "0.0.3"
-    },
-    "devDependencies": {
-        "ava": "^0.15.2"
-    }
+  "name": "is-in-correct-format",
+  "version": "0.0.1",
+  "description": "Allows you to check whether a given object is in the correct specified format.",
+  "license": "MIT",
+  "repository": "nperez0111/is-in-correct-format",
+  "author": {
+    "name": "Nick The Sick",
+    "email": "nperez0111@gmail.com",
+    "url": "nickthesick.com"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "ava"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    ""
+  ],
+  "dependencies": {
+    "is-buffer": "^1.1.4",
+    "is-function": "^1.0.1",
+    "is-number": "^2.1.0",
+    "is-object": "^1.0.1",
+    "is-promise": "^2.1.0",
+    "is-regex": "^1.0.3",
+    "is-string": "^1.0.4",
+    "is-symbol": "^1.0.1"
+  },
+  "devDependencies": {
+    "ava": "^0.15.2"
+  }
 }

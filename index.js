@@ -8,7 +8,12 @@ const is = {
         promise: require( 'is-promise' ),
         regex: require( 'is-regex' ),
         symbol: require( 'is-symbol' ),
-        boolean: a => a === true || a === false
+        boolean: a => a === true || a === false,
+        array: a => Array.isArray( a ),
+        null: a => a === null,
+        undefined: a => a === undefined,
+        true: a => a === true,
+        false: a => a === false
     },
     extender = require( 'objextension' ),
     checkAllVals = function ( obj, checker ) {
@@ -29,7 +34,10 @@ const is = {
                 return traverseObj( val, check )
             } else {
                 if ( is.function( check ) ) {
-
+                    if ( is.array( val ) ) {
+                        ///TEST THIS SHIT
+                        return val.every( c => check( c, key, val ) )
+                    }
                     return check( val, key )
                 }
                 return val instanceof check
