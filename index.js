@@ -15,7 +15,6 @@ const is = {
         true: a => a === true,
         false: a => a === false
     },
-    extender = require( 'objextension' ),
     checkAllVals = function ( obj, checker ) {
         return Object.keys( obj ).every( function ( key ) {
             let val = obj[ key ]
